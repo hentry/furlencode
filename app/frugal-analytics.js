@@ -5,7 +5,44 @@ var fa = {};
 (function () {
 
     fa.url = 'http://192.168.2.109:3000/tracker';
-    fa.userId = {};
+    fa.userId = assignUserId();
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+            }
+            return "";
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            var expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+        }
+
+        function assignUserId() {
+            var userId = getCookie('userId')
+            if (userId) {
+                return userId;
+            } else {
+                setCookie("userId", guid(), 365);
+            }
+        }
+        function guid() {
+
+          function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+              .toString(16)
+              .substring(1);
+          }
+          return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+        }
     /**
     *
     */
@@ -211,7 +248,7 @@ var fa = {};
     *   This is the method to instantiate the frugal-analytics event
     */
     fa.instantiate = function (options) {
-        fa.userId = options.userId;
+//        fa.userId = options.userId;
         fa.trackEvent('Create');
         initializeDomEvents();
      };
@@ -228,7 +265,9 @@ var fa = {};
                 event : eventName,
                 data : data ? JSON.stringify(data) : JSON.stringify({}),
                 createdAt : new Date().getTime(),
-                page : window.location.href
+                page : window.location.pathname+window.location.hash,
+                url : window.location.host,
+                referrer : document.referrer
             }
         });
      };

@@ -19,11 +19,11 @@
                         <div ng-non-bindable class="tag-body">
                             <div>
                                 <span>Latitude: </span>
-                                <span>{{latitude}}</span>
+                                <span id="latitude">{{latitude}}</span>
                             </div>
                             <div>
                                 <span>Longitude: </span>
-                                <span>{{longitude}}</span>
+                                <span id="longitude">{{longitude}}</span>
                             </div>
                             <div>
                                 <span>Category: </span>
@@ -31,6 +31,7 @@
                                 <span id="store-id" style="opacity:0">{{id}}</span>
                             </div>
                         </div>
+                        <button id="" data-ng-click="$parent.$parent.getDirections($event)">Get Directions</button>
                         <div class="footer" ng-controller='RedirectController' data-ng-init="storeId=id">
                             <button class="btn rate-btn" data-ng-click="goToViewPage($event)">Rate and Review me</button>
                         </div>

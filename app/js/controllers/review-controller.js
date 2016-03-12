@@ -64,6 +64,7 @@
                 $scope.store = data.data.store[0];
                 $scope.store.storeName = getCategoryById($scope.store.category_id).name;
                 getAddressFromLAtLong($scope.store.latitude, $scope.store.longitude);
+                $scope.isAlreadyReviewed();
             });
         };
 
@@ -71,12 +72,10 @@
             $scope.writeReview = true;
         };
 
-        $scope.postThisReview = function () {
-            if (!$scope.reviewText) return;
-
+        function rateReview(isLike, critic) {
             var payload = {
-                liked : false,
-                critic : $scope.reviewText,
+                liked : isLike,
+                critic : critic,
                 user_id : localStorageService.get('no-userId'),
                 store_id : $stateParams.id
             };
@@ -84,21 +83,38 @@
                 getStoreById();
             });
         }
+        $scope.postThisReview = function (isLike) {
+            if (!$scope.reviewText) return;
+
+            rateReview(isLike, $scope.reviewText);
+        }
 
         $scope.isAlreadyReviewed = function () {
 
             if (!$scope.store.reviews) return;
-            var isReviewed = false;
+            $scope.isReviewed = false;
+            var myReview = {};
 
             for (var index = 0; index < $scope.store.reviews.length; index++) {
                 var review = $scope.store.reviews[index];
                 if (review.user_id == localStorageService.get('no-userId')) {
-                    isReviewed = true;
+                    $scope.isReviewed = true;
+                    myReview = review;
                     break;
                 }
             }
 
-            return isReviewed;
+            return myReview;
+        };
+
+        $scope.editMyReview = function () {
+            $scope.writeReview = true;
+            $scope.reviewText = $scope.isAlreadyReviewed().critic;
+        };
+
+        $scope.likePost = function (review) {
+            review.liked = true;
+            rateReview(review.liked, review.critic);
         };
 
         $scope.init();

@@ -11,7 +11,7 @@
                 longitude: 10
               },
               mexiIdKey : 'id',
-              zoom: 8,
+              zoom: 4,
               bounds: {},
               clickMarkers: [
                       {id: 1, "latitude": 50.948968, "longitude": 6.944781},
@@ -54,6 +54,37 @@
               scrollwheel: false
             };
 
+
+
+                    // get directions using google maps api
+            //        $scope.getDirections = function () {
+            //
+            //        }
+
+            $scope.getDirections = function ($event) {
+
+                $scope.directionsDisplay = new google.maps.DirectionsRenderer();
+                $scope.directionsService = new google.maps.DirectionsService();
+                var geocoder = new google.maps.Geocoder();
+                var latitude = ($($event.target).parents().find('#latitude')).html();
+                var longitude = ($($event.target).parents().find('#longitude')).html();
+                var request = {
+                  origin:new google.maps.LatLng($scope.currentLocation.latitude,$scope.currentLocation.longitude),
+                  destination:new google.maps.LatLng(latitude,longitude),
+                  travelMode: google.maps.TravelMode.DRIVING
+                };
+                $scope.directionsService.route(request, function (response, status) {
+                      if (status === google.maps.DirectionsStatus.OK) {
+                        $scope.directionsDisplay.setDirections(response);
+                        $scope.directionsDisplay.setMap($scope.map.control.getGMap());
+        //                directionsDisplay.setPanel(document.getElementById('directionsList'));
+        //                $scope.directions.showList = true;
+                      } else {
+                        alert('Google route unsuccesfull!');
+                      }
+                });
+            };
+
         });
 
 
@@ -78,10 +109,10 @@
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
-                    console.log(position);
                     $scope.gotGeoLocation = true;
-                    $scope.map.center.latitude = position.coords.latitude;
-                    $scope.map.center.longitude = position.coords.longitude;
+                    $scope.currentLocation = {};
+                    $scope.currentLocation.latitude = position.coords.latitude;
+                    $scope.currentLocation.longitude = position.coords.longitude;
 
                     $scope.$evalAsync();
                 });
@@ -119,6 +150,8 @@
                 });
 
         };
+
+
 
         function getCategoryById (id) {
 
@@ -266,6 +299,8 @@
             var id = $($($event.target).parents().find('#store-id')[0]).html();
             $state.go('review', {id : id});
         };
+
+
         $scope.init();
     });
 })();

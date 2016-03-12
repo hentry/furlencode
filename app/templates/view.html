@@ -10,8 +10,8 @@
         </div>
         <div class="action-tray">
             <span><img src="assets/images/like.svg"/> like </span>
-            <span data-ng-click="writeAnReview()" data-ng-show="isAlreadyReviewed()"><img src="assets/images/comment.svg"/>review </span>
-            <span data-ng-click="writeAnReview()" data-ng-show="isAlreadyReviewed()"><img src="assets/images/comment.svg"/>Edit Your</span>
+            <span data-ng-click="writeAnReview()" data-ng-show="!isReviewed"><img src="assets/images/comment.svg"/>review </span>
+            <span data-ng-click="editMyReview()" data-ng-show="isReviewed"><img src="assets/images/comment.svg"/>Edit Your</span>
         </div>
         <div class="review-section">
             <div class="first-review" data-ng-if="store.reviews.length == 0" data-ng-hide="writeReview">
@@ -20,7 +20,7 @@
             </div>
             <div class="review-box" data-ng-if="writeReview">
                 <textarea data-ng-model="$parent.reviewText" class="form-control" placeholder="Please write your reviews here"></textarea>
-                <button class="btn post-btn" data-ng-click="postThisReview()">Post Review</button>
+                <button class="btn post-btn" data-ng-click="postThisReview(false)">{{isReviewed ? 'Edit Review' : 'Post Review'}}</button>
             </div>
             <div class="all-reviews" data-ng-if="store.reviews.length > 0">
                 <ul class="">
@@ -29,7 +29,10 @@
                             <img class="user-img" src="assets/images/social.svg"/>
                             <div>{{review.user}}</div>
                         </div>
-                        <div class="col-sm-10">{{review.critic}}</div>
+                        <div class="col-sm-10">
+                            <span>{{review.critic}}</span>
+                            <div class="text-right review-like"><span data-ng-click="likePost(review)" style="cursor : pointer"><span data-ng-class="{'isLiked' : review.liked}">like </span><img data-ng-if="!review.liked" src="assets/images/like.svg"/><img data-ng-if="review.liked" src="assets/images/like-blue.svg"/></span></div>
+                        </div>
                    </li>
                 </ul>
             </div>
