@@ -1,5 +1,5 @@
 (function () {
-    angular.module('nightOwl').controller('ReviewController', function ($scope, $state, $stateParams, nightOwlFactory, uiGmapGoogleMapApi) {
+    angular.module('nightOwl').controller('ReviewController', function ($scope, $state, $stateParams, nightOwlFactory, uiGmapGoogleMapApi, localStorageService) {
         $scope.init = function () {
             console.log('initialized');
             $scope.store = {};
@@ -84,6 +84,23 @@
                 getStoreById();
             });
         }
+
+        $scope.isAlreadyReviewed = function () {
+
+            if (!$scope.store.reviews) return;
+            var isReviewed = false;
+
+            for (var index = 0; index < $scope.store.reviews.length; index++) {
+                var review = $scope.store.reviews[index];
+                if (review.user_id == localStorageService.get('no-userId')) {
+                    isReviewed = true;
+                    break;
+                }
+            }
+
+            return isReviewed;
+        };
+
         $scope.init();
     });
 })();

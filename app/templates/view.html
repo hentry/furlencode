@@ -10,7 +10,8 @@
         </div>
         <div class="action-tray">
             <span><img src="assets/images/like.svg"/> like </span>
-            <span data-ng-click="writeAnReview()"><img src="assets/images/comment.svg"/>review </span>
+            <span data-ng-click="writeAnReview()" data-ng-show="isAlreadyReviewed()"><img src="assets/images/comment.svg"/>review </span>
+            <span data-ng-click="writeAnReview()" data-ng-show="isAlreadyReviewed()"><img src="assets/images/comment.svg"/>Edit Your</span>
         </div>
         <div class="review-section">
             <div class="first-review" data-ng-if="store.reviews.length == 0" data-ng-hide="writeReview">
@@ -18,13 +19,17 @@
                 <img src="assets/images/empty-search.svg"/>
             </div>
             <div class="review-box" data-ng-if="writeReview">
-                <textarea data-ng-model="reviewText" class="form-control" placeholder="Please write your reviews here"></textarea>
+                <textarea data-ng-model="$parent.reviewText" class="form-control" placeholder="Please write your reviews here"></textarea>
                 <button class="btn post-btn" data-ng-click="postThisReview()">Post Review</button>
             </div>
             <div class="all-reviews" data-ng-if="store.reviews.length > 0">
-                <ul>
-                   <li data-ng-repeat="review in store.reviews">
-                        {{review.message}}
+                <ul class="">
+                   <li data-ng-repeat="review in store.reviews" class="row">
+                        <div class="col-sm-2 text-center">
+                            <img class="user-img" src="assets/images/social.svg"/>
+                            <div>{{review.user}}</div>
+                        </div>
+                        <div class="col-sm-10">{{review.critic}}</div>
                    </li>
                 </ul>
             </div>

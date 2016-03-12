@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('nightOwl').factory('nightOwlFactory',function ($http) {
+    angular.module('nightOwl').factory('nightOwlFactory',function ($http, URL) {
 
         var factoryObject = {};
 
@@ -17,35 +17,35 @@
 
         function getCategories() {
 //            return $http.get('assets/json/categories.json');
-            return $http.get('http://192.168.2.109:3000/api/categories');
+            return $http.get(URL+'categories');
         }
 
         function signup(data) {
-            return $http.post('http://192.168.2.109:3000/api/signup', data);
+            return $http.post(URL+'signup', data);
         }
 
         function login(data) {
-            return $http.post('http://192.168.2.109:3000/api/login', data);
+            return $http.post(URL+'login', data);
         }
 
         function getStores() {
-            return $http.get('http://192.168.2.109:3000/api/stores');
+            return $http.get(URL+'stores');
         }
 
         function createStore(data) {
-            return $http.post('http://192.168.2.109:3000/api/stores', data);
+            return $http.post(URL+'stores', data);
         }
 
         function createCategory(data) {
-            return $http.post('http://192.168.2.109:3000/api/categories', data);
+            return $http.post(URL+'categories', data);
         }
 
         function getStoreById(id) {
-            return $http.get('http://192.168.2.109:3000/api/store/'+id);
+            return $http.get(URL+'store/'+id);
         }
 
         function postReview(data) {
-            return $http.post('http://192.168.2.109:3000/api/reviews', data);
+            return $http.post(URL+'reviews', data);
         }
     });
 })();
