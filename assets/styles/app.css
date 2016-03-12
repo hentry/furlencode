@@ -1,0 +1,120 @@
+.login-wrapper, .signup-wrapper {
+    max-width : 400px;
+    margin-top: 250px;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    float: none !important;
+}
+
+body, html, .app-wrapper {
+    height : 100%;
+}
+
+.login-wrapper .login-text, .signup-wrapper .login-text {
+    font-size : 18px;
+    margin-bottom : 30px;
+    color : rgb(99, 115, 158);
+}
+
+.name-field input {
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.pass-field input {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.mail-field input {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+}
+.sign-up-label {
+    color : #4da6ff;
+    clear : both;
+}
+.sign-up-label a {
+    text-decoration : none;
+    cursor : pointer;
+    text-align : center;
+}
+
+.pass-field {
+    margin-bottom : 30px;
+}
+.login-btn {
+    background-color : #4da6ff !important;
+    color : white !important;
+}
+
+.home-wrapper {
+    height : 100%;
+}
+
+.home-wrapper header {
+    height: 70px;
+    text-align : center;
+    border-bottom: 1px solid #EAEAEA;
+}
+.home-wrapper header img {
+    height: 38px;
+}
+.heading {
+    font-size: 30px;
+    font-family: "Impact", Charcoal, sans-serif;
+    position: relative;
+    top: 8px;
+}
+
+.map-area {
+    height : calc(100% - 70px);
+}
+
+.angular-google-map-container {
+    height: 100%;
+}
+.angular-google-map {
+    height: 100%;
+}
+.add-tag {
+    height: 30px !important;
+    position: relative;
+    top: 15px;
+    cursor : pointer;
+}
+.category-list {
+    position: relative;
+    top: 17px;
+    display: inline !important;
+    width: 80% !important;
+}
+
+@media screen and (max-width: 480px) {
+    .home-wrapper header {
+        height: 115px;
+    }
+}
+
+.marker-labels {
+    background-color : white;
+}
+
+.create-tag-form {
+    width : 80%;
+    margin : 40px auto !important;
+}
+.create-tag-form .create-labels {
+    position : relative;
+    top : 7px;
+}
+
+.each-field {
+    margin-top : 10px;
+    margin-bottom : 10px;
+}
+.display-block {
+    display : block !important;
+}

@@ -1,0 +1,25 @@
+{
+  "name": "Furlencode",
+  "authors": [
+    "Hentry Martin"
+  ],
+  "description": "This is all about the furlenco hackathon",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "devDependencies": {
+    "angular": "1.5.0",
+    "angular-ui-router": "0.2.13",
+    "jquery": "2.1.4",
+    "jquery.ui": "1.11.3",
+    "angular-bootstrap": "1.2.4"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
