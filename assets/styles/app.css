@@ -118,3 +118,57 @@ body, html, .app-wrapper {
 .display-block {
     display : block !important;
 }
+
+.tag-header {
+    font-size : 20px;
+    font-weight : 500;
+    height : 40px !important;
+}
+
+.tag-body {
+    margin-top : 20px;
+}
+
+.rate-btn {
+    position: relative !important;
+    left: 23% !important;
+    margin-top : 20px;
+    margin-bottom : 20px;
+}
+
+.information-area, .action-tray, .review-section {
+    width : 80%;
+    margin : 0 auto;
+    margin-top : 10px;
+}
+.action-tray {
+    margin-left : 20px auto;
+    cursor : pointer;
+}
+.action-tray img {
+    margin-right : 10px;
+}
+.action-tray span {
+    margin-left : 20px;
+    margin-top : 10px;
+}
+.information-area {
+    border-bottom : 1px solid #EAEAEA;
+}
+
+.first-review {
+    color : grey;
+}
+.first-review img {
+    height: 50px;
+}
+
+.review-box {
+    margin-top: 30px;
+
+}
+.review-box .post-btn {
+    position: relative !important;
+    left: 50% !important;
+    margin-top: 30px;
+}

@@ -3,20 +3,37 @@
         <div class="col-md-10 col-sm-6"><img src="assets/images/owl-icon.jpg"><span class="heading">NightOwl</span></div>
         <div class="col-md-2 col-sm-6">
             <select class="form-control category-list" ng-model="selectedCategory" ng-options="category.id as category.name for category in categories"></select>
-            <img data-ng-click="goToCreatePage()" class="add-tag" src="assets/images/add_tag.svg"/>
+            <img data-ng-disabled="!selectedCoordinates.lat || !selectedCoordinates.lng" data-ng-click="goToCreatePage()" class="add-tag" src="assets/images/add_tag.svg"/>
         </div>
     </header>
     <section class="map-area">
         <ui-gmap-google-map center="map.center"  zoom="map.zoom" options="options" events="map.events" pan="true">
-            <ui-gmap-marker coords="map.clickedMarker"  idKey="map.clickedMarker.id" options="map.clickedMarker.options" click="onClick()" events="marker.events">
-                <ui-gmap-window options="windowOptions" show="windowOptions.visible" closeClick="closeClick()">
-                    <div>{{title}}</div>
-                </ui-gmap-window>
+            <ui-gmap-marker show="showMarker" coords="map.clickedMarker"  idKey="map.clickedMarker.id" options="map.clickedMarker.options" click="onClick()" events="marker.events">
             </ui-gmap-marker>
-            <ui-gmap-markers idKey="map.mexiIdKey" models="markers" coords="'self'" icon="'icon'" click="onMarkerClicked" >
+            <ui-gmap-markers idKey="map.mexiIdKey" models="markers" coords="'self'" icon="'icon'" click="onMarkerClicked">
                 <ui-gmap-windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
                     <div>
-                        This is already added location. You can make you review on clicking the below button
+                        <header class="tag-header text-center" ng-non-bindable>
+                            <span class="place-name">Place Name: </span>{{name}}
+                        </header>
+                        <div ng-non-bindable class="tag-body">
+                            <div>
+                                <span>Latitude: </span>
+                                <span>{{latitude}}</span>
+                            </div>
+                            <div>
+                                <span>Longitude: </span>
+                                <span>{{longitude}}</span>
+                            </div>
+                            <div>
+                                <span>Category: </span>
+                                <span>{{category}}</span>
+                                <span id="store-id" style="opacity:0">{{id}}</span>
+                            </div>
+                        </div>
+                        <div class="footer" ng-controller='RedirectController' data-ng-init="storeId=id">
+                            <button class="btn rate-btn" data-ng-click="goToViewPage($event)">Rate and Review me</button>
+                        </div>
                     </div>
                 </ui-gmap-windows>
             </ui-gmap-markers>

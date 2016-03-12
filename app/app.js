@@ -1,7 +1,7 @@
 (function (){
 
-    angular.module('nightOwl', ["ui.bootstrap", 'ui.router', 'uiGmapgoogle-maps']).
-    config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
+    angular.module('nightOwl', ["ui.bootstrap", 'ui.router', 'uiGmapgoogle-maps', 'LocalStorageModule']).
+    config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider, localStorageServiceProvider) {
 
         $stateProvider.state('login', {
             url : '/login',
@@ -15,15 +15,10 @@
            url : '/home',
            controller : 'HomeController',
            templateUrl : 'app/templates/home.html'
-        }).state('create', {
-             url : '/create',
-             params : {
-                categories : '',
-                lat : '',
-                lng : ''
-             },
-             controller : 'CreateTagController',
-             templateUrl : 'app/templates/create.html'
+        }).state('review', {
+             url : '/review/:id',
+             controller : 'ReviewController',
+             templateUrl : 'app/templates/view.html'
           });
 
         uiGmapGoogleMapApiProvider.configure({
@@ -31,6 +26,8 @@
             v: '3.22', //defaults to latest 3.X anyhow
             libraries: 'weather,geometry,visualization'
         });
+
+        localStorageServiceProvider.setStorageType('sessionStorage');
 
         $urlRouterProvider.otherwise('/login');
         console.log('calling');

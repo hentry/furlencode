@@ -2,10 +2,10 @@
     <form class="form">
         <div class="login-text text-center">Welcome to NightOwl</div>
         <div class="col-sm-12 name-field">
-            <input class="form-control" type="text" placeholder="Name">
+            <input data-ng-model="user.email" class="form-control" type="text" placeholder="email">
         </div>
         <div class="col-sm-12 pass-field">
-            <input class="form-control" type="password" placeholder="Password">
+            <input data-ng-model="user.password" class="form-control" type="password" placeholder="Password">
         </div>
         <div class="col-sm-12 pass-field">
             <button type="button" data-ng-click="login()" class="btn form-control login-btn">Log In</button>

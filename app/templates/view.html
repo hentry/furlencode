@@ -1,0 +1,33 @@
+<div class="home-wrapper">
+    <header class="row">
+        <div class="col-md-12 col-sm-12"><img src="assets/images/owl-icon.jpg"><span class="heading">NightOwl</span></div>
+    </header>
+    <section class="map-area">
+        <div class="information-area text-center">
+            <h2>{{store.name}}</h2>
+            {{store.address}}
+            <h3>Category : {{store.storeName}}</h3>
+        </div>
+        <div class="action-tray">
+            <span><img src="assets/images/like.svg"/> like </span>
+            <span data-ng-click="writeAnReview()"><img src="assets/images/comment.svg"/>review </span>
+        </div>
+        <div class="review-section">
+            <div class="first-review" data-ng-if="store.reviews.length == 0" data-ng-hide="writeReview">
+                Be the first one to write review about this
+                <img src="assets/images/empty-search.svg"/>
+            </div>
+            <div class="review-box" data-ng-if="writeReview">
+                <textarea data-ng-model="reviewText" class="form-control" placeholder="Please write your reviews here"></textarea>
+                <button class="btn post-btn" data-ng-click="postThisReview()">Post Review</button>
+            </div>
+            <div class="all-reviews" data-ng-if="store.reviews.length > 0">
+                <ul>
+                   <li data-ng-repeat="review in store.reviews">
+                        {{review.message}}
+                   </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>

@@ -201,10 +201,10 @@ var fa = {};
 
     function initializeDomEvents () {
 
-//        document.addEventListener("click" , function (event) {
-//            console.log(this, event, {'x' : event.x, 'y' : event.y, 'pageWidth' : document.body.clientWidth,'pageHeight' : document.body.clientHeight, 'screenWidth' : screen.width, 'screenHeight' : screen.height});
-//            fa.trackEvent('click', {'x' : event.x, 'y' : event.y, 'pageWidth' : document.body.clientWidth,'pageHeight' : document.body.clientHeight, 'screenWidth' : screen.width, 'screenHeight' : screen.height});
-//        });
+        document.addEventListener("click" , function (event) {
+            console.log(this, event, {'x' : event.x, 'y' : event.y, 'pageWidth' : document.body.clientWidth,'pageHeight' : document.body.clientHeight, 'screenWidth' : screen.width, 'screenHeight' : screen.height});
+            fa.trackEvent('click', {'x' : event.x, 'y' : event.y, 'pageWidth' : document.body.clientWidth,'pageHeight' : document.body.clientHeight, 'screenWidth' : screen.width, 'screenHeight' : screen.height});
+        });
     };
 
     /**
