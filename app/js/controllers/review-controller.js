@@ -4,8 +4,55 @@
             console.log('initialized');
             $scope.store = {};
             $scope.reviewText = '';
-            console.log($stateParams);
+            $scope.dateOptions = {
+                dateDisabled: false,
+                formatYear: 'yy',
+                maxDate: new Date(),
+                startingDay: 1
+            };
+            $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+            $scope.format = $scope.formats[0];
+            $scope.altInputFormats = ['M!/d!/yyyy'];
+            $scope.popup1 = {
+                opened: false
+            };
 
+            $scope.popup2 = {
+                opened: false
+            };
+
+            getVisitsByStoreId();
+
+        };
+
+        function getVisitsByStoreId() {
+            var payload = {
+                user_id : localStorageService.get('no-userId'),
+                store_id : $stateParams.id
+            };
+
+            nightOwlFactory.getVisitsByStoreId(payload).then(function (data) {
+                console.log(data);
+                $scope.storeVisitCount = data.data.result.count;
+            })
+        }
+        $scope.open1 = function() {
+            $scope.popup1.opened = true;
+        };
+
+        $scope.postVisit = function () {
+
+            var payload = {
+                store_id : $stateParams.id,
+                user_id : localStorageService.get('no-userId'),
+                purpose : $scope.visit.purpose,
+                time : $scope.visit.date,
+                status : true
+            };
+
+            nightOwlFactory.postVisit(payload).then(function () {
+                getVisitsByStoreId();
+            });
         };
 
         uiGmapGoogleMapApi.then(function(maps) {

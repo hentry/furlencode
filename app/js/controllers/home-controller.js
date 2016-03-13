@@ -1,17 +1,20 @@
 (function () {
-    angular.module('nightOwl').controller('HomeController', function ($scope, $state, uiGmapGoogleMapApi, nightOwlFactory, $uibModal, $rootScope, $timeout) {
+    angular.module('nightOwl').controller('HomeController', function ($scope, $state, uiGmapGoogleMapApi, nightOwlFactory, $uibModal, $rootScope, $timeout, localStorageService, $filter) {
 
         uiGmapGoogleMapApi.then(function(maps) {
 
             getLocation();
             getCategories();
+            $scope.iconUrl = 'https://s3.amazonaws.com/uploads.hipchat.com/63650/3177593/xS66AZFiD16CG6W/tool%20%281%29.png';
+            $scope.userName = localStorageService.get('no-userName');
             $scope.map = {
               center: {
                 latitude: 30,
                 longitude: 10
               },
+              control : {},
               mexiIdKey : 'id',
-              zoom: 4,
+              zoom: 8,
               bounds: {},
               clickMarkers: [
                       {id: 1, "latitude": 50.948968, "longitude": 6.944781},
@@ -23,7 +26,13 @@
                   options:{
                     draggable: true
                   }
-                },
+                },currentLocation: {
+                    id: 1,
+                    options:{
+                        icon : 'https://s3.amazonaws.com/uploads.hipchat.com/63650/3177593/UGpa4Bu55PoUCd6/circle%20%281%29.png',
+                      draggable: true
+                    }
+                  },
               events: {
                   click: function (mapModel, eventName, originalEventArgs) {
 
@@ -41,6 +50,7 @@
                         labelAnchor:"50 0"
                       }
                     };
+//                    fa.trackEvent('mapClicked', {latitude: lat,longitude: lon});
                     $scope.selectedCoordinates = {
                         lat : lat,
                         lng : lon
@@ -53,13 +63,6 @@
             $scope.options = {
               scrollwheel: false
             };
-
-
-
-                    // get directions using google maps api
-            //        $scope.getDirections = function () {
-            //
-            //        }
 
             $scope.getDirections = function ($event) {
 
@@ -113,6 +116,7 @@
                     $scope.currentLocation = {};
                     $scope.currentLocation.latitude = position.coords.latitude;
                     $scope.currentLocation.longitude = position.coords.longitude;
+                    $scope.map.control.refresh({latitude : $scope.currentLocation.latitude, longitude : $scope.currentLocation.longitude});
 
                     $scope.$evalAsync();
                 });
@@ -137,6 +141,7 @@
                 coords : $scope.selectedCoordinates,
                 category : $scope.selectedCategory
               };
+            fa.trackEvent('newStoreModalOpened', $scope.parameters);
             var modalInstance = $uibModal.open({
                   animation: $scope.animationsEnabled,
                   templateUrl: 'app/templates/create-tag-modal.html',
@@ -172,12 +177,13 @@
 
               var markers = [];
               nightOwlFactory.getStores().then(function(data) {
-                 console.log(data);
+
                     for (var index = 0; index < data.data.result.length; index++) {
                         var store = data.data.result[index];
-                        markers.push({'id' : store.id, 'latitude' : store.latitude, 'longitude' : store.longitude, 'category' : getCategoryById(store.category_id).name, 'name' : store.name, 'showWindow' : false,"options":{"animation":1,"labelContent":"Markers id 1","labelAnchor":"22 0","labelClass":"marker-labels" }})
+                        markers.push({'id' : store.id, 'latitude' : store.latitude, 'longitude' : store.longitude, 'category' : getCategoryById(store.category_id).name, 'categoryId' : store.category_id,  'name' : store.name, 'showWindow' : false,"options":{"animation":1,"labelContent":"Markers id 1","labelAnchor":"22 0","labelClass":"marker-labels" }})
                     }
                     $scope.markers = markers;
+                    $scope.markersCopy = angular.copy($scope.markers);
                     _.each($scope.markers, function (marker) {
                         marker.closeClick = function () {
                             marker.showWindow = false;
@@ -201,10 +207,28 @@
 
         $scope.goToCreatePage = openModal;
 
+        $scope.filterBasedOnCategory = function () {
+
+            var filteredMarkers = [];
+            for (var index = 0; index < $scope.markersCopy.length; index++) {
+                var marker = $scope.markersCopy[index];
+                if (marker.categoryId == $scope.selectedCategory) {
+                    filteredMarkers.push(marker);
+                }
+            }
+            $scope.markers = $filter('filter')(filteredMarkers, {name: $scope.tagName});
+        };
+
+        $scope.filterBasedOnName = function () {
+//            $scope.filterBasedOnCategory();
+            $scope.markers = $filter('filter')($scope.markersCopy, {name: $scope.tagName, categoryId : $scope.selectedCategory});
+        };
+
         $scope.init = function () {
             $rootScope.$on('refreshStores', function () {
                 getCategories();
                 $scope.map.clickedMarker = {};
+                $scope.selectedCategory = '';
                 $scope.showMarker = false;
             });
             $scope.markers = [];
@@ -225,6 +249,7 @@
             };
             nightOwlFactory.createStore(payload).then(function(data) {
                 $uibModalInstance.close();
+                fa.trackEvent('newStoreCreated', payload);
                 $rootScope.$broadcast('refreshStores');
             });
         };
@@ -244,6 +269,7 @@
         };
 
         $scope.cancel = function () {
+            fa.trackEvent('modalClosedWithoutCreation', {});
             $uibModalInstance.dismiss('cancel');
         };
 
@@ -255,8 +281,14 @@
             $scope.store.latitude = parameters.coords.lat;
             $scope.store.longitude = parameters.coords.lng;
 
-        };
+            $scope.hstep = 1;
+            $scope.mstep = 15;
 
+
+        };
+        $scope.changed = function () {
+            $log.log('Time changed to: ' + $scope.store.closeTime);
+        };
           /**
           *   This is to get the list of categories
           */

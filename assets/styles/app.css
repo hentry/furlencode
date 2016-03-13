@@ -92,7 +92,7 @@ body, html, .app-wrapper {
     width: 80% !important;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 700px) {
     .home-wrapper header {
         height: 115px;
     }
@@ -197,4 +197,57 @@ body, html, .app-wrapper {
 
 .isLiked {
     color : #008be7;
+}
+
+.direction-btn {
+    position: relative !important;
+    left: 26% !important;
+}
+.direction-btn img {
+    height : 20px;
+}
+.direction-btn span {
+    margin-left : 5px;
+}
+.logo {
+    margin-bottom : 20px;
+}
+.logo img {
+    height : 30px;
+}
+.visit-hover {
+    cursor : pointer;
+}
+.visit-form {
+    width : 60%;
+    margin : 20px auto !important;
+}
+
+.visit-label {
+    margin-top : 10px;
+    margin-bottom : 10px;
+}
+.visit-count {
+    color: #237B23;
+    font-size: 19px;
+}
+
+.rating {
+    font-size : 18px;
+    float : right;
+}
+
+.user-tray {
+    float: left;
+    position: relative;
+    top: 6px;
+}
+
+.user-tray img {
+    border-radius : 50%;
+}
+
+.input-name {
+    position : relative;
+    top : 18px;
 }

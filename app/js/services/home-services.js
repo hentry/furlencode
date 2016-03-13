@@ -12,6 +12,8 @@
         factoryObject.createCategory = createCategory;
         factoryObject.getStoreById = getStoreById;
         factoryObject.postReview = postReview;
+        factoryObject.postVisit = postVisit;
+        factoryObject.getVisitsByStoreId = getVisitsByStoreId;
 
         return factoryObject;
 
@@ -46,6 +48,14 @@
 
         function postReview(data) {
             return $http.post(URL+'reviews', data);
+        }
+
+        function postVisit(data) {
+            return $http.post(URL+'visit', data);
+        }
+
+        function getVisitsByStoreId(data) {
+            return $http.post(URL+'visits', data);
         }
     });
 })();

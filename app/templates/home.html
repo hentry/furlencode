@@ -1,14 +1,26 @@
 <div class="home-wrapper">
     <header class="row">
-        <div class="col-md-10 col-sm-6"><img src="assets/images/owl-icon.jpg"><span class="heading">NightOwl</span></div>
-        <div class="col-md-2 col-sm-6">
-            <select class="form-control category-list" ng-model="selectedCategory" ng-options="category.id as category.name for category in categories"></select>
-            <img data-ng-disabled="!selectedCoordinates.lat || !selectedCoordinates.lng" data-ng-click="goToCreatePage()" class="add-tag" src="assets/images/add_tag.svg"/>
+        <div class="col-md-8 col-sm-6">
+            <span class="user-tray"><img src="assets/images/social.svg"/> <span>{{userName}}</span></span>
+            <img src="assets/images/owl-icon.jpg"><span class="heading">NightOwl</span>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="col-sm-5">
+                <input type="text" data-ng-model="tagName" class="form-control input-name hidden-md hidden-sm hidden-xs" placeholder="Tag name" data-ng-change="filterBasedOnName()"/>
+            </div>
+            <div class="col-sm-7">
+                <select class="form-control category-list" ng-model="selectedCategory" ng-options="category.id as category.name for category in categories" data-ng-change="filterBasedOnCategory()"></select>
+                <img data-ng-if="selectedCoordinates.lat && selectedCoordinates.lng" data-ng-click="goToCreatePage()" class="add-tag" src="assets/images/add_tag.svg"/>
+                <img data-ng-if="!(selectedCoordinates.lat && selectedCoordinates.lng)" data-ng-click="goToCreatePage()" class="add-tag" src="assets/images/add_tag_grey.svg"/>
+            </div>
+
         </div>
     </header>
     <section class="map-area">
-        <ui-gmap-google-map center="map.center"  zoom="map.zoom" options="options" events="map.events" pan="true">
+        <ui-gmap-google-map center="map.center"  zoom="map.zoom" options="options" events="map.events" control="map.control" pan="true">
             <ui-gmap-marker show="showMarker" coords="map.clickedMarker"  idKey="map.clickedMarker.id" options="map.clickedMarker.options" click="onClick()" events="marker.events">
+            </ui-gmap-marker>
+            <ui-gmap-marker coords="currentLocation"  idKey="map.currentLocation.id" options="map.currentLocation.options">
             </ui-gmap-marker>
             <ui-gmap-markers idKey="map.mexiIdKey" models="markers" coords="'self'" icon="'icon'" click="onMarkerClicked">
                 <ui-gmap-windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
@@ -31,7 +43,7 @@
                                 <span id="store-id" style="opacity:0">{{id}}</span>
                             </div>
                         </div>
-                        <button id="" data-ng-click="$parent.$parent.getDirections($event)">Get Directions</button>
+                        <button class="btn direction-btn btn-success" id="" data-ng-click="$parent.$parent.getDirections($event)"><img src="assets/images/tool.svg"/><span>Get Directions</span></button>
                         <div class="footer" ng-controller='RedirectController' data-ng-init="storeId=id">
                             <button class="btn rate-btn" data-ng-click="goToViewPage($event)">Rate and Review me</button>
                         </div>

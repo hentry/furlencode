@@ -244,13 +244,28 @@ var fa = {};
         });
     };
 
+    var count = 0;
+    function startTimer () {
+
+
+        setInterval(function () {
+            count = count + 1;
+        }, 1000);
+    }
+
+    window.onbeforeunload = function () {
+        fa.trackEvent('sessionOver', {timings : count});
+    };
+
     /**
     *   This is the method to instantiate the frugal-analytics event
     */
     fa.instantiate = function (options) {
 //        fa.userId = options.userId;
         fa.trackEvent('Create');
+        fa.appId = options.appId;
         initializeDomEvents();
+        startTimer();
      };
 
      /**
@@ -267,7 +282,8 @@ var fa = {};
                 createdAt : new Date().getTime(),
                 page : window.location.pathname+window.location.hash,
                 url : window.location.host,
-                referrer : document.referrer
+                referrer : document.referrer,
+                userAgent : navigator.userAgent
             }
         });
      };

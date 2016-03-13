@@ -3,15 +3,35 @@
         <div class="col-md-12 col-sm-12"><img src="assets/images/owl-icon.jpg"><span class="heading">NightOwl</span></div>
     </header>
     <section class="map-area">
+        <div class="visit-count text-center" data-ng-show="storeVisitCount > 0">You have visited {{storeVisitCount}} times</div>
         <div class="information-area text-center">
             <h2>{{store.name}}</h2>
             {{store.address}}
             <h3>Category : {{store.storeName}}</h3>
+            <div data-ng-click="showVisitForm = !showVisitForm" class="visit-hover"><div><img src="assets/images/arrow-down.svg"/></div><div>Have you visited here?</div></div>
+            <form name="visit-form" data-ng-show="showVisitForm" class="row visit-form">
+                <div class="col-sm-12">
+                    <input class="form-control" placeholder="visit purpose" data-ng-model="visit.purpose"/>
+                </div>
+                <div class="col-sm-12">
+                    <div class="visit-label">Enter your date of visit</div>
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="visit.date" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                          <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                          </span>
+                    </p>
+                </div>
+                <div class="col-sm-12">
+                    <btn class="btn btn-success" data-ng-click="postVisit()">Visited</btn>
+                </div>
+            </form>
         </div>
         <div class="action-tray">
-            <span><img src="assets/images/like.svg"/> like </span>
+            <!--<span><img src="assets/images/like.svg"/> like </span>-->
             <span data-ng-click="writeAnReview()" data-ng-show="!isReviewed"><img src="assets/images/comment.svg"/>review </span>
             <span data-ng-click="editMyReview()" data-ng-show="isReviewed"><img src="assets/images/comment.svg"/>Edit Your</span>
+            <span class="rating">Rating {{store.rating}}/100</span>
         </div>
         <div class="review-section">
             <div class="first-review" data-ng-if="store.reviews.length == 0" data-ng-hide="writeReview">

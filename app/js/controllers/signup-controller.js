@@ -12,13 +12,13 @@
                 email : $scope.user.email,
                 password : $scope.user.password
             };
+            fa.trackEvent('signupClicked', {user : payload.name, email : payload.email});
             nightOwlFactory.signup(payload).then(function() {
                 $state.go('home');
-//                toaster.pop('success', 'Sign up successfully');
+                fa.trackEvent('signupSuccess', data);
             },function (data) {
                 console.log(data);
-                alert(data.data.message);
-//                toaster.pop('error', data.data.message);
+                fa.trackEvent('signupFailed', data);
             });
         };
     });
