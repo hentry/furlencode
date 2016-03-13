@@ -262,7 +262,7 @@ var fa = {};
     */
     fa.instantiate = function (options) {
 //        fa.userId = options.userId;
-        fa.trackEvent('Create');
+        fa.trackEvent('Create', {});
         fa.appId = options.appId;
         initializeDomEvents();
         startTimer();
@@ -272,7 +272,7 @@ var fa = {};
      *  This is the method to track events based on the event
      */
      fa.trackEvent = function (eventName, data) {
-
+        data.userAgent = navigator.userAgent;
         Ajax.post({
             url : fa.url,
             data : {
@@ -282,8 +282,7 @@ var fa = {};
                 createdAt : new Date().getTime(),
                 page : window.location.pathname+window.location.hash,
                 url : window.location.host,
-                referrer : document.referrer,
-                userAgent : navigator.userAgent
+                referrer : document.referrer
             }
         });
      };

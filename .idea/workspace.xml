@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d8701fef-4407-47c1-9e38-b794386c993b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/moment/moment.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app-constants.js" afterPath="$PROJECT_DIR$/app/app-constants.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/frugal-analytics.js" afterPath="$PROJECT_DIR$/app/frugal-analytics.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers/home-controller.js" afterPath="$PROJECT_DIR$/app/js/controllers/home-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers/login-controller.js" afterPath="$PROJECT_DIR$/app/js/controllers/login-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers/review-controller.js" afterPath="$PROJECT_DIR$/app/js/controllers/review-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers/signup-controller.js" afterPath="$PROJECT_DIR$/app/js/controllers/signup-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/services/home-services.js" afterPath="$PROJECT_DIR$/app/js/services/home-services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/create-tag-modal.html" afterPath="$PROJECT_DIR$/app/templates/create-tag-modal.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/home.html" afterPath="$PROJECT_DIR$/app/templates/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/login.html" afterPath="$PROJECT_DIR$/app/templates/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/signup.html" afterPath="$PROJECT_DIR$/app/templates/signup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/view.html" afterPath="$PROJECT_DIR$/app/templates/view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/styles/app.css" afterPath="$PROJECT_DIR$/assets/styles/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="furlencode.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,8 +41,18 @@
       <file leaf-file-name="home-controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/controllers/home-controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.4074075">
-              <caret line="210" column="0" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
+            <state vertical-scroll-proportion="-8.888889">
+              <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="frugal-analytics.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/frugal-analytics.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.16309012">
+              <caret line="268" column="7" selection-start-line="268" selection-start-column="7" selection-end-line="268" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -70,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="frugal-analytics.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/frugal-analytics.js">
+      <file leaf-file-name="example.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/controllers/example.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.740741">
-              <caret line="256" column="56" selection-start-line="256" selection-start-column="56" selection-end-line="256" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="664" column="7" selection-start-line="664" selection-start-column="7" selection-end-line="664" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -84,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/app/app-constants.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="53" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
+              <caret line="3" column="60" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -110,21 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.5">
-              <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+            <state vertical-scroll-proportion="-7.5">
+              <caret line="24" column="90" selection-start-line="24" selection-start-column="90" selection-end-line="24" selection-end-column="90" />
               <folding>
                 <element signature="n#style#0;n#span#2;n#div#2;n#div#0;n#div#0;n#ui-gmap-windows#0;n#ui-gmap-markers#0;n#ui-gmap-google-map#0;n#section#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -132,11 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/styles/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33261803">
-              <caret line="94" column="33" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
+            <state vertical-scroll-proportion="-4.0740743">
+              <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -167,14 +155,14 @@
         <option value="$PROJECT_DIR$/app/templates/create-tag-modal.html" />
         <option value="$PROJECT_DIR$/app/templates/view.html" />
         <option value="$PROJECT_DIR$/app/js/controllers/login-controller.js" />
-        <option value="$PROJECT_DIR$/app/frugal-analytics.js" />
-        <option value="$PROJECT_DIR$/app/app-constants.js" />
         <option value="$PROJECT_DIR$/app/js/controllers/signup-controller.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app/app.js" />
-        <option value="$PROJECT_DIR$/app/js/controllers/home-controller.js" />
-        <option value="$PROJECT_DIR$/app/templates/home.html" />
         <option value="$PROJECT_DIR$/assets/styles/app.css" />
+        <option value="$PROJECT_DIR$/app/templates/home.html" />
+        <option value="$PROJECT_DIR$/app/app-constants.js" />
+        <option value="$PROJECT_DIR$/app/frugal-analytics.js" />
+        <option value="$PROJECT_DIR$/app/js/controllers/home-controller.js" />
       </list>
     </option>
   </component>
@@ -685,14 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers/example.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="664" column="7" selection-start-line="664" selection-start-column="7" selection-end-line="664" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/create.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.125">
@@ -809,11 +789,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/frugal-analytics.js">
+    <entry file="file://$PROJECT_DIR$/assets/styles/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.740741">
-          <caret line="256" column="56" selection-start-line="256" selection-start-column="56" selection-end-line="256" selection-end-column="56" />
+        <state vertical-scroll-proportion="-4.0740743">
+          <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5">
+          <caret line="24" column="90" selection-start-line="24" selection-start-column="90" selection-end-line="24" selection-end-column="90" />
+          <folding>
+            <element signature="n#style#0;n#span#2;n#div#2;n#div#0;n#div#0;n#ui-gmap-windows#0;n#ui-gmap-markers#0;n#ui-gmap-google-map#0;n#section#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -821,14 +811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.666667">
           <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/app-constants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="53" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
           <folding />
         </state>
       </provider>
@@ -841,28 +823,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers/home-controller.js">
+    <entry file="file://$PROJECT_DIR$/app/js/controllers/example.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.4074075">
-          <caret line="210" column="0" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="664" column="7" selection-start-line="664" selection-start-column="7" selection-end-line="664" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/home.html">
+    <entry file="file://$PROJECT_DIR$/app/app-constants.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5">
-          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-          <folding>
-            <element signature="n#style#0;n#span#2;n#div#2;n#div#0;n#div#0;n#ui-gmap-windows#0;n#ui-gmap-markers#0;n#ui-gmap-google-map#0;n#section#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="60" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/app.css">
+    <entry file="file://$PROJECT_DIR$/app/js/controllers/home-controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33261803">
-          <caret line="94" column="33" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
+        <state vertical-scroll-proportion="-8.888889">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frugal-analytics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16309012">
+          <caret line="268" column="7" selection-start-line="268" selection-start-column="7" selection-end-line="268" selection-end-column="7" />
           <folding />
         </state>
       </provider>

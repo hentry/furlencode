@@ -14,7 +14,7 @@
               },
               control : {},
               mexiIdKey : 'id',
-              zoom: 8,
+              zoom: 10,
               bounds: {},
               clickMarkers: [
                       {id: 1, "latitude": 50.948968, "longitude": 6.944781},
@@ -29,7 +29,7 @@
                 },currentLocation: {
                     id: 1,
                     options:{
-                        icon : 'https://s3.amazonaws.com/uploads.hipchat.com/63650/3177593/UGpa4Bu55PoUCd6/circle%20%281%29.png',
+                        icon : 'https://s3.amazonaws.com/uploads.hipchat.com/63650/3177593/Lf4cJasO7iMbJ67/user_icon.png',
                       draggable: true
                     }
                   },
@@ -196,14 +196,6 @@
               });
 
         }
-
-        $scope.goToViewPage = function(id) {
-            console.log(id);
-        };
-
-//        $scope.goToCreatePage = function() {
-//            $state.go('create', {categories: $scope.selectedCategory, lat : $scope.selectedCoordinates.lat,lng : $scope.selectedCoordinates.lng });
-//        };
 
         $scope.goToCreatePage = openModal;
 
